@@ -14,7 +14,7 @@ java -jar -Xmx1024M -Xms256M  ChatgptBot-0.0.1-SNAPSHOT.jar --server.port=8089
 
 
 
-4.会提示**qq登录滑动验证**，这时将link后面的链接（https开头）放入滑动验证助手，通过验证后把得到的一串代码粘贴到下面继续回车，这时候有的人会有设备锁就需要发送短信，输入yes，将手机收到的验证码输入，回车，得到Bot login successful就说明成功了，可以在qq对机器人私聊看看能不能得到回复。然会就会发现当前目录下生成了device.json![image-20230323154227923](C:/Users/86156/AppData/Roaming/Typora/typora-user-images/image-20230323154227923.png)这个东西就可以保证在这个设备登录不需要滑动验证之类的操作了。
+4.会提示**qq登录滑动验证**，这时将link后面的链接（https开头）放入滑动验证助手，通过验证后把得到的一串代码粘贴到下面继续回车，这时候有的人会有设备锁就需要发送短信，输入yes，将手机收到的验证码输入，回车，得到Bot login successful就说明成功了，可以在qq对机器人私聊看看能不能得到回复。然会就会发现当前目录下生成了device.json![image-20230323154227923.png](https://s2.loli.net/2023/03/23/SfLQFtzJhUdVg7p.png)这个东西就可以保证在这个设备登录不需要滑动验证之类的操作了。
 
 5.此时为了保证bot能够在后台持续运行，我们先CTRL+C关闭程序运行，然后执行
 
@@ -38,15 +38,15 @@ nohup java -jar -Xmx1024M -Xms256M  ChatgptBot-0.0.1-SNAPSHOT.jar --server.port=
 
 - application.properties是项目的配置文件，机器人的密码账号，以及chatgpt的api的key都在里面修改
 
-  ![image-20230323155011538](C:/Users/86156/AppData/Roaming/Typora/typora-user-images/image-20230323155011538.png)
+  ![image-20230323155011538.png](https://s2.loli.net/2023/03/23/ytc4wYTxFm8PnO7.png)
 
 - qBot是机器人的设置，里面包括账号密码（可以到配置文件修改），设备协议（平板登录，手机登录等等默认安卓平板），心跳策略等等设置，**注意：已加入登录修复，2023.3.23号测试没问题，如果显示登录失败版本过低就删除device.json，重新验证登录。**
 
-![image-20230323155735798](C:/Users/86156/AppData/Roaming/Typora/typora-user-images/image-20230323155735798.png)
+![image-20230323155735798.png](https://s2.loli.net/2023/03/23/BtIDiasQfdKzJ1M.png)
 
 - MyListener是继承Mirai的事件监听器，主要实现了私聊监听和群聊监听，也就是好友私聊和qq群可以使用。
 
-  ![image-20230323155928793](C:/Users/86156/AppData/Roaming/Typora/typora-user-images/image-20230323155928793.png)
+  ![image-20230323155928793.png](https://s2.loli.net/2023/03/23/jU1428oNqG3TPFv.png)
 
 - Module下面的chatgptClient就是实现chatgpt询问的客户端，是基于[chatgpt-java](https://github.com/Grt1228/chatgpt-java)一个别人的SDK实现的，实现的功能有连续对话，单次询问，清除对话历史（相当于开启新话题）,查询你的免费额度还剩多少钱（总所周知调用api是要花钱的，每个免费用户现在注册只有5美元的额度了），这个对话调用的模型是最新的GPT-3.5那个t什么的模型，chatgpt4据说也支持，你们自己研究这里是他的项目地址[chatgpt-java](https://github.com/Grt1228/chatgpt-java)。
 
@@ -58,4 +58,4 @@ nohup java -jar -Xmx1024M -Xms256M  ChatgptBot-0.0.1-SNAPSHOT.jar --server.port=
 
   - SpringUtil是一个获得机器人bean的工具类，不了解springboot的bean创建过程知识就别去动他。
 
-    ![image-20230323160942883](C:/Users/86156/AppData/Roaming/Typora/typora-user-images/image-20230323160942883.png)
+    ![image-20230323160942883.png](https://s2.loli.net/2023/03/23/6QZcxpiPLWs4A8B.png)
